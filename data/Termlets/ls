@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ls_output=$(ls "$@")
+ls_output=$(ls -a "$@")
 dir_begin_mark=$(text_menu_start '2')
 dir_end_mark=$(text_menu_end '2')
 file_begin_mark=$(text_menu_start '1')
@@ -10,7 +10,7 @@ file_end_mark=$(text_menu_end '1')
 ls_output=$'\n'$ls_output$'\n'
 
 # TODO: Search for files in directory passed to ls rather than the current directory
-for filename in *; do
+for filename in {*, .*}; do
 	if [[ -d $filename ]]; then
 		file_substitution="$dir_begin_mark$filename$dir_end_mark"
 	else
